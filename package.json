@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cross-env NODE_ENV=production next build && next export",
-    "postbuild": "xcopy /E /I /Y public out",
+    "build": "cross-env NODE_ENV=production next build",
+    "postbuild": "xcopy /E /I /Y public out && node scripts/copy-public.js",
     "lint": "next lint",
     "clean": "rimraf .next out temp",
     "predeploy": "npm run clean && npm run build",
-    "deploy": "gh-pages -d out",
+    "deploy": "node scripts/deploy-manual.js",
     "start": "next start",
     "serve": "npx serve out --single"
   },
