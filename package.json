@@ -4,17 +4,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cross-env NODE_ENV=production next build",
+    "postbuild": "xcopy /E /I /Y public out",
+    "predeploy": "npm run build",
+    "lint": "next lint",
+    "clean": "rimraf .next out temp",
+    "deploy": "gh-pages -d out",
     "start": "next start",
-    "lint": "eslint"
+    "serve": "npx serve out --single"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.76.1",
+    "cross-env": "^10.1.0",
     "lucide-react": "^0.548.0",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "recharts": "^3.3.0"
+    "recharts": "^3.3.0",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -23,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

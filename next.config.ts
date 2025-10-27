@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',  // ESTO ES CRÍTICO
+  trailingSlash: true,
+  basePath: '/mi-landing',
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
