@@ -1,9 +1,11 @@
 import type { NextConfig } from "next";
 
+const repo = 'finanzes'
+
 const nextConfig: NextConfig = {
-  output: 'export',  // ESTO ES CRÍTICO
   trailingSlash: true,
-  basePath: '/finanzes',
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}/`,
   images: { unoptimized: true },
 };
 
